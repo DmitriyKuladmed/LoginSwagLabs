@@ -7,15 +7,19 @@
 ```
 LoginSwagLabs/
 ├── pages/                    # Page Object классы
+│   ├── __init__.py          # Экспорт классов
 │   ├── base_page.py         # Базовый класс
+│   ├── constants.py         # Константы и локаторы
 │   ├── login_page.py        # Страница логина
 │   └── inventory_page.py    # Страница инвентаря
 ├── tests/                    # Тесты
+│   ├── __init__.py
 │   └── test_login.py        # Тесты авторизации
 ├── conftest.py              # Фикстуры pytest
 ├── pytest.ini               # Конфигурация pytest
 ├── requirements.txt         # Зависимости Python
 ├── Dockerfile               # Контейнеризация
+├── .gitignore               # Игнорируемые файлы
 └── README.md                # Документация
 ```
 
@@ -97,8 +101,11 @@ docker build -t saucedemo-tests .
 # Запуск тестов
 docker run --rm saucedemo-tests
 
-# Запуск с сохранением Allure результатов
+# Запуск с сохранением Allure результатов (Linux/macOS)
 docker run --rm -v $(pwd)/allure-results:/app/allure-results saucedemo-tests
+
+# Запуск с сохранением Allure результатов (Windows PowerShell)
+docker run --rm -v ${PWD}/allure-results:/app/allure-results saucedemo-tests
 ```
 
 ## Allure отчёты
